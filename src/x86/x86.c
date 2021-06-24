@@ -25,6 +25,7 @@
 #include "x86/iei_tank.h"
 #include "x86/intel_adlink_lec_al.h"
 #include "x86/up_xtreme.h"
+#include "x86/up_xtreme_i11.h"
 
 mraa_platform_t
 mraa_x86_platform()
@@ -102,6 +103,9 @@ mraa_x86_platform()
             } else if (strncasecmp(line, "UP-WHL01", strlen("UP-WHL01") + 1) == 0) {
                 platform_type = MRAA_UPXTREME;
                 plat = mraa_upxtreme_board();
+            } else if (strncasecmp(line, "UPX-TGL01", strlen("UPX-TGL01") + 1) == 0) {
+                platform_type = MRAA_UPXTREME;
+                plat = mraa_upxtreme_i11_board();
             } else {
                 syslog(LOG_ERR, "Platform not supported, not initialising");
                 platform_type = MRAA_UNKNOWN_PLATFORM;
@@ -168,6 +172,8 @@ mraa_x86_platform()
     plat = mraa_iei_tank();
     #elif defined(xMRAA_UPXTREME)
     plat = mraa_upxtreme_board();
+    #elif defined(xMRAA_UPXTREME_I11)
+    plat = mraa_upxtreme_i11_board();
     #else
         #error "Not using a valid platform value from mraa_platform_t - cannot compile"
     #endif

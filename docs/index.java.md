@@ -53,6 +53,7 @@ Specific platform information for supported platforms is documented here:
 - @ref ft4222
 - @ref iei-tank
 - @ref up-xtreme
+- @ref up-xtremeI11
 
 ## DEBUGGING
 

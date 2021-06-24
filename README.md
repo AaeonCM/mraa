@@ -38,6 +38,7 @@ X86
 * [IEI Tank](../master/docs/iei-tank.md)
 * [ADLINK IPi-SMARC X86](../master/docs/adlink_ipi_x86.md)
 * [UP Xtreme](../master/docs/up_xtreme.md)
+* [UP Xtreme i11](../master/docs/up_xtreme_i11.md)
 
 ARM
 ---
