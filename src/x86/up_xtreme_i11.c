@@ -111,6 +111,10 @@ mraa_up_aio_get_valid_fp(mraa_aio_context dev)
 mraa_board_t*
 mraa_upxtreme_i11_board()
 {
+    const char* pinctrl_path = "/sys/bus/platform/drivers/upboard-pinctrl";
+    const char* wmi_gpio_path = "/sys/bus/platform/drivers/gpio-aaeon";
+    int have_pinctrl = access(pinctrl_path, F_OK) != -1;
+    int have_wmi = access(wmi_gpio_path, F_OK) != -1;
     mraa_board_t* b = (mraa_board_t*) calloc(1, sizeof (mraa_board_t));
 
     if (b == NULL) {
@@ -177,6 +181,47 @@ mraa_upxtreme_i11_board()
     mraa_upxtreme_set_pininfo(b, 38, "I2S_DIN",   (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, MRAA_UPXTREME_I11_CHIP_BASE + 74, 0, 74);
     mraa_upxtreme_set_pininfo(b, 39, "GND",       (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
     mraa_upxtreme_set_pininfo(b, 40, "I2S_DOUT",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, MRAA_UPXTREME_I11_CHIP_BASE + 73, 0, 73);
+    /* Add RPI GPIO additional mapping from GPIO 0 to GPIO 27*/
+    mraa_upxtreme_set_pininfo(b, 41, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 42, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 43, "RPI_GPIO2",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 2, 1, 2);
+    mraa_upxtreme_set_pininfo(b, 44, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 45, "RPI_GPIO3",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 3, 1, 3);
+    mraa_upxtreme_set_pininfo(b, 46, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 47, "RPI_GPIO4",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 4, 1, 4);
+    mraa_upxtreme_set_pininfo(b, 48, "RPI_GPIO14", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 14, 1, 14);
+    mraa_upxtreme_set_pininfo(b, 49, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 50, "RPI_GPIO15", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 15, 1, 15);
+    mraa_upxtreme_set_pininfo(b, 51, "RPI_GPIO17", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 17, 1, 17);
+    mraa_upxtreme_set_pininfo(b, 52, "RPI_GPIO18", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 18, 1, 18);
+    mraa_upxtreme_set_pininfo(b, 53, "RPI_GPIO27", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 27, 1, 27);
+    mraa_upxtreme_set_pininfo(b, 54, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 55, "RPI_GPIO22", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 22, 1, 22);
+    mraa_upxtreme_set_pininfo(b, 56, "RPI_GPIO23", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 23, 1, 23);
+    mraa_upxtreme_set_pininfo(b, 57, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 58, "RPI_GPIO24", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 24, 1, 24);
+    mraa_upxtreme_set_pininfo(b, 59, "RPI_GPIO10", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 10, 1, 10);
+    mraa_upxtreme_set_pininfo(b, 60, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 61, "RPI_GPIO9",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 9, 1, 9);
+    mraa_upxtreme_set_pininfo(b, 62, "RPI_GPIO25", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 25, 1, 25);
+    mraa_upxtreme_set_pininfo(b, 63, "RPI_GPIO11", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 11, 1, 11);
+    mraa_upxtreme_set_pininfo(b, 64, "RPI_GPIO8",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 8, 1, 8);
+    mraa_upxtreme_set_pininfo(b, 65, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 66, "RPI_GPIO7",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 7, 1, 7);
+    mraa_upxtreme_set_pininfo(b, 67, "RPI_GPIO0",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 0, 1, 0);
+    mraa_upxtreme_set_pininfo(b, 68, "RPI_GPIO1",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 1, 1, 1);
+    mraa_upxtreme_set_pininfo(b, 69, "RPI_GPIO5",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 5, 1, 5);
+    mraa_upxtreme_set_pininfo(b, 70, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 71, "RPI_GPIO6",  (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 6, 1, 6);
+    mraa_upxtreme_set_pininfo(b, 72, "RPI_GPIO12", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 12, 1, 12);
+    mraa_upxtreme_set_pininfo(b, 73, "RPI_GPIO13", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 13, 1, 13);
+    mraa_upxtreme_set_pininfo(b, 74, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 75, "RPI_GPIO19", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 19, 1, 19);
+    mraa_upxtreme_set_pininfo(b, 76, "RPI_GPIO16", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 16, 1, 16);
+    mraa_upxtreme_set_pininfo(b, 77, "RPI_GPIO26", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 26, 1, 26);
+    mraa_upxtreme_set_pininfo(b, 78, "RPI_GPIO20", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 20, 1, 20);
+    mraa_upxtreme_set_pininfo(b, 79, "INVALID",    (mraa_pincapabilities_t) {0, 0, 0, 0, 0, 0, 0, 0}, -1, -1, -1);
+    mraa_upxtreme_set_pininfo(b, 80, "RPI_GPIO21", (mraa_pincapabilities_t) {1, 1, 0, 0, 0, 0, 0, 0}, 21, 1, 21);
 
     b->i2c_bus_count = 0;
     b->def_i2c_bus = 0;
@@ -256,10 +301,6 @@ mraa_upxtreme_i11_board()
     b->aio_non_seq = 1;
     mraa_upxtreme_get_pin_index(b, "ADC0", (int*) &(b->aio_dev[0].pin));
 
-    const char* pinctrl_path = "/sys/bus/platform/drivers/upboard-pinctrl";
-    const char* wmi_gpio_path = "/sys/bus/platform/drivers/gpio-aaeon";
-    int have_pinctrl = access(pinctrl_path, F_OK) != -1;
-    int have_wmi = access(wmi_gpio_path, F_OK) != -1;
     syslog(LOG_NOTICE, "UP Xtreme i11: UP pinctrl driver %savailable", have_pinctrl ? "" : "un");
     syslog(LOG_NOTICE, "UP Xtreme i11: wmi driver %savailable", have_wmi ? "" : "un");
     if (have_pinctrl || have_wmi)
