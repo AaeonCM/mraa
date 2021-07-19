@@ -21,6 +21,7 @@
 #include "x86/intel_cherryhills.h"
 #include "x86/up.h"
 #include "x86/up2.h"
+#include "x86/up2_pro.h"
 #include "x86/intel_joule_expansion.h"
 #include "x86/iei_tank.h"
 #include "x86/intel_adlink_lec_al.h"
@@ -85,6 +86,9 @@ mraa_x86_platform()
             } else if (strncasecmp(line, "UP-APL01", strlen("UP-APL01") + 1) == 0) {
                 platform_type = MRAA_UP2;
                 plat = mraa_up2_board();
+            } else if (strncasecmp(line, "UPN-APL01", strlen("UPN-APL01") + 1) == 0) {
+                platform_type = MRAA_UP2_PRO;
+                plat = mraa_up2_pro_board();
             } else if (strncasecmp(line, "RVP", strlen("RVP") + 1) == 0) {
                 platform_type = MRAA_INTEL_JOULE_EXPANSION;
                 plat = mraa_joule_expansion_board();
@@ -166,6 +170,8 @@ mraa_x86_platform()
     plat = mraa_up_board();
     #elif defined(xMRAA_UP2)
     plat = mraa_up2_board();
+    #elif defined(xMRAA_UP2_PRO)
+    plat = mraa_up2_pro_board();
     #elif defined(xMRAA_INTEL_JOULE_EXPANSION)
     plat = mraa_joule_expansion_board();
     #elif defined(xMRAA_IEI_TANK)

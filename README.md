@@ -34,6 +34,7 @@ X86
 * [NUC 5th generation](../master/docs/intel_nuc5.md)
 * [UP](../master/docs/up.md)
 * [UP Squared](../master/docs/up2.md)
+* [UP Squared](../master/docs/up2-pro.md)
 * [Intel Joule](../master/docs/joule.md)
 * [IEI Tank](../master/docs/iei-tank.md)
 * [ADLINK IPi-SMARC X86](../master/docs/adlink_ipi_x86.md)

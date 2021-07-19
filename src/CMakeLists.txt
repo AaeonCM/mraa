@@ -53,6 +53,7 @@ set (mraa_LIB_X86_SRCS_NOAUTO
   ${PROJECT_SOURCE_DIR}/src/x86/intel_cherryhills.c
   ${PROJECT_SOURCE_DIR}/src/x86/up.c
   ${PROJECT_SOURCE_DIR}/src/x86/up2.c
+  ${PROJECT_SOURCE_DIR}/src/x86/up2_pro.c
   ${PROJECT_SOURCE_DIR}/src/x86/intel_joule_expansion.c
   ${PROJECT_SOURCE_DIR}/src/x86/iei_tank.c
   ${PROJECT_SOURCE_DIR}/src/x86/adlink-ipi.c
@@ -85,6 +86,8 @@ if (NOT ${MRAAPLATFORMFORCE} STREQUAL "ALL")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up.c)
   elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UP2")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up2.c)
+  elseif (${MRAAPLATFORMFORCE} STREQUAL "MRAA_UP2_PRO")
+    set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/up2_pro.c)
   elseif( ${MRAAPLATFORMFORCE} STREQUAL "MRAA_INTEL_JOULE_EXPANSION")
     set (mraa_LIB_X86_SRCS_NOAUTO ${PROJECT_SOURCE_DIR}/src/x86/x86.c ${PROJECT_SOURCE_DIR}/src/x86/intel_joule_expansion.c)
   elseif( ${MRAAPLATFORMFORCE} STREQUAL "MRAA_IEI_TANK")

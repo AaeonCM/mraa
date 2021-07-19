@@ -50,6 +50,7 @@ Specific platform information for supported platforms is documented here:
 - @ref nuc5
 - @ref up
 - @ref up2
+- @ref up2_pro
 - @ref joule
 - @ref ft4222
 - @ref _96boards
